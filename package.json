@@ -1,0 +1,31 @@
+{
+  "name": "krypto",
+  "version": "0.0.1",
+  "description": "Trying to grasp foundations of cryptography",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:w": "jest --watch",
+    "test:cov": "jest --coverage"
+  },
+  "keywords": [
+    "crypto",
+    "code",
+    "cryptographic",
+    "secrets",
+    "enigma"
+  ],
+  "author": "ugo.arzur@fabernovel.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.19.1",
+    "@babel/preset-env": "^7.19.1",
+    "@types/jest": "^29.0.3",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^18.7.18",
+    "babel-jest": "^29.0.3",
+    "jest": "^29.0.3",
+    "ts-jest": "^29.0.1",
+    "typescript": "^4.8.3"
+  }
+}
