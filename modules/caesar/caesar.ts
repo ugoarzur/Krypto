@@ -1,26 +1,40 @@
 import shifter, { dictionary } from '../../utils/dictionary'
-
-export const encryptWord = (letter: string) => {
+/**
+ * Encrypt one letter
+ * @description encrypt a letter based on two dictionaries, one classic and one shifed
+ */
+export const encryptLetter = (letter: string) => {
   const letterPosition = dictionary.findIndex(
-    (dicLetter) => dicLetter === letter
+    (dictionnaryLetter) => dictionnaryLetter === letter
   )
   const encryptedLetterPosition = (letterPosition + 3) % dictionary.length
-  console.log('encryptedLetterPosition', encryptedLetterPosition)
   return dictionary[encryptedLetterPosition]
 }
-
-export const decryptWord = (letter: string) => {
-  const encryptedDictionary = shifter(3)
-  const encryptedLetterPosition = encryptedDictionary.findIndex(
-    (dicLetter) => dicLetter === letter
+/**
+ * Decrypt one letter
+ * @description decrypt a letter based on two dictionaries, one classic and one shifed
+ */
+export const decryptLetter = (letter: string) => {
+  const shiftedDictionary = shifter(3)
+  const encryptedLetterPosition = shiftedDictionary.findIndex(
+    (dictionnaryLetter) => dictionnaryLetter === letter
   )
-  console.log('encryptedLetterPosition', encryptedLetterPosition)
   const decryptedLetterPosition =
     (encryptedLetterPosition - 3) % dictionary.length
   return dictionary[decryptedLetterPosition]
 }
 
+/**
+ * Encrypt the whole word
+ */
 export const encrypt = (sentence: string) => {
   const arrayifiedSentence = Array.from(sentence)
-  return arrayifiedSentence.forEach((letter) => encryptWord)
+  const encryptedSentence : string[]= []
+  for (let index = 0; index < arrayifiedSentence.length; index++) {
+    const letter = arrayifiedSentence[index];
+    const encryptedLetter = encryptLetter(letter)
+    encryptedSentence.push(encryptedLetter)
+  }
+  return encryptedSentence.join("");
+
 }

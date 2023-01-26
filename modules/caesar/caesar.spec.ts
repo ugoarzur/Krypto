@@ -1,17 +1,18 @@
-import shifter, { dictionary } from '../../utils/dictionary'
-import { decryptWord, encrypt, encryptWord } from './caesar'
+import { decryptLetter, encryptLetter, encrypt } from './caesar'
 
-test('Should Encrypt', () => {
-  const message = "WLQWLQ HW OH VFDUDEHH G'RU"
-  const expected = "TINTIN ET LE SCARABEE D'OR"
-  const trimedMessage = message.trim()
-  const trimedExpected = expected.trim()
-  expect(encryptWord('n')).toEqual('q')
+const encrypted = "WLQWLQ HW OH VFDUDEHH G'RU"
+const message = "TINTIN ET LE SCARABEE D'OR"
+
+test('Should Encrypt one letter', () => {
+  expect(encryptLetter('n')).toEqual('q')
+})
+
+test('Should Encrypt a word', () => {
+  const trimedMessage = message.split(' ').join('')
+  const trimedExpected = encrypted.split(' ').join('')
   expect(encrypt(trimedMessage)).toEqual(trimedExpected)
 })
 
 test('Should Decrypt', () => {
-  const message = "TINTIN ET LE SCARABEE D'OR"
-  const expected = "WLQWLQ HW OH VFDUDEHH G'RU"
-  expect(decryptWord('q')).toEqual('n')
+  expect(decryptLetter('q')).toEqual('n')
 })
